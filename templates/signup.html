@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+
+
+<div class="login-div">
+    <form class="d-flex flex-column" method="post" action="">{% csrf_token %}
+            <label class="label-login">Username: </label>
+            {{form.username}}
+            <label class="label-login">First Name: </label>
+            {{form.first_name}}
+            <label class="label-login">Last Name: </label>
+            {{form.last_name}}
+            <label class="label-login">E-mail: </label>
+            {{form.email}}
+            <label class="label-login">Password: </label>
+            {{form.password1}}
+            <label class="label-login">Repeat Password: </label>
+            {{form.password2}}
+        <button type="submit" class="login-button">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
