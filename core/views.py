@@ -42,6 +42,7 @@ def categoria(request, id_categoria):
 
 
 def submit_log_in(request):
+    
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -50,8 +51,8 @@ def submit_log_in(request):
             login(request, usuario)
             return redirect('/')
         else:
-            messages.error(request, "Usuário ou senha inválido")
-    return redirect('/')
+            messages.error(request, "Invalid user or password")
+            return redirect('/login/')
 
 
 
@@ -62,11 +63,22 @@ def logout_user(request):
 
 def registerUser(request):
     form = CreateUserForm()
+    context = {'form': form}
+    return render(request, 'signup.html', context)
+
+
+
+def submit_signup(request):
+    form = CreateUserForm()
 
     if request.method == 'POST':
         form = CreateUserForm()
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, f"Account was created for {user}")
+            return redirect("/index/")
 
-    context = {'form': form}
-    return render(request, 'signup.html', context)
+        else:
+            messages.error(request, "Invalid sign up")
+            return redirect('/signup/')

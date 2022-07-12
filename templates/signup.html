@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 
-{% block title %}Welcome | {% endblock %}
+{% block title %}Sign Up | {% endblock %}
 
 {% block content %}
 
 
 <div class="login-div">
-    <form class="d-flex flex-column" method="post" action="">{% csrf_token %}
+    <form class="d-flex flex-column" method="post" action="submit">{% csrf_token %}
             <label class="label-login">Username: </label>
             {{form.username}}
             <label class="label-login">First Name: </label>
@@ -21,7 +21,13 @@
             <label class="label-login">Repeat Password: </label>
             {{form.password2}}
         <button type="submit" class="login-button">Submit</button>
+        <div class="erro">
+            {% for message in messages %}
+    
+            <span><br>Erro: </span> {{ message }}
+    
+            {% endfor %}
+        </div>
     </form>
 </div>
-
 {% endblock %}

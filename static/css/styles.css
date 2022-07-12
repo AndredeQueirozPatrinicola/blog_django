@@ -86,9 +86,9 @@ footer {
     margin: 10px;
 }
 
-.categories{
-    max-height: 394px;
-    max-width: 288px;
+.content-categories{
+    min-height: 96px;
+    min-width: 254px;
 }
 
 .image-post{

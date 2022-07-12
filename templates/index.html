@@ -32,7 +32,7 @@
             <h5 class="card-title">Django</h5>
             <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua..."</p>
-                <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
+            <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
         </div>
     </div>
     <div class="card card-post">
@@ -41,16 +41,27 @@
             <h5 class="card-title">Back-End</h5>
             <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua..."</p>
-                <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
+            <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
         </div>
     </div>
-    <div class="card card-post categories">
-        <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Como arranjar namorada</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua..."</p>
+    <div>
+        <div class="categories card card-post">
+            <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{ categorie.name }</h5>
+                <p class="card-text" style="min-height: 96px;">"{ categorie.description }"</p>
                 <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="categories card card-post">
+            <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{ categorie.name }</h5>
+                <p class="card-text" style="min-height: 96px;">"{ categorie.description }"</p>
+                <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
+            </div>
         </div>
     </div>
 </div>

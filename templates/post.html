@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 
 
-{% block title %}Welcome | {% endblock %}
+{% block title %}Post | {% endblock %}
 
 {% block content %}
 
-<div class="container d-flex flex-wrap align-items-center main-div">
-    <div style="padding: 300px;">
-        oi
+
+<div>
+    <p><a href="#">{ categorie.name }</a> > <a href="#">{ post.name }</a></p>
+</div>
+<div class="container align-items-center main-div">
+    <div>
+        <h2>{ post.title }</h2>
+    </div>
+    <div>
+        <h5>{ post.sub-title }</h5>
+    </div>
+    <div>
+        <p>{ post.img }</p>
+    </div>
+    <div>
+        <p>{ post.content }</p>
     </div>
 </div>
 
