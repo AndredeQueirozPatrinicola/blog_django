@@ -21,11 +21,6 @@ def login_page(request):
 
 
 
-def signup(request):
-    return render(request, 'signup.html')
-
-
-
 def teste(request):
     return render(request, 'post-design.html')
 
@@ -72,12 +67,12 @@ def submit_signup(request):
     form = CreateUserForm()
 
     if request.method == 'POST':
-        form = CreateUserForm()
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, f"Account was created for {user}")
-            return redirect("/index/")
+            return redirect("/")
 
         else:
             messages.error(request, "Invalid sign up")
