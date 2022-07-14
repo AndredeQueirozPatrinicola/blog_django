@@ -21,13 +21,13 @@ def login_page(request):
 
 
 
-def teste(request):
-    return render(request, 'post-design.html')
-
-
-
 def post(request):
     return render(request, 'post.html')
+
+
+@login_required(login_url="/")
+def post_categoria(request):
+    return render(request, 'post-cat.html')    
 
 '''
 def categoria(request, id_categoria):
