@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 from .forms import CreateUserForm
+from .models import Posts
 
 #from core.models import Categorias
 
@@ -22,7 +23,11 @@ def login_page(request):
 
 
 def post(request):
-    return render(request, 'post.html')
+    post1 = Posts.objects.all()
+    context = {
+        'post':post1
+    }
+    return render(request, 'post.html', context)
 
 
 @login_required(login_url="/")
@@ -75,5 +80,7 @@ def submit_signup(request):
             return redirect("/")
 
         else:
-            messages.error(request, "Invalid sign up")
+            messages.error(request, "Your Username must be unique")
+            messages.error(request, "Your password must have at least 8 characters")
+            messages.error(request, "Your password must be different from your username")
             return redirect('/signup/')

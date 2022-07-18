@@ -26,6 +26,8 @@
         </div>
         <div class="d-flex items-center">
             {% if request.user.is_authenticated %}
+            <p class="login-icon">Hello, {{ user.get_username }}</p>
+
             <a href="/post-categoria/" class='login-icon'>Post!</a>
 
             <a href="/logout/" class="signup-icon">Log out</a>

@@ -51,7 +51,7 @@ footer {
     color: #a1d0fc;
 }
 
-.login-icon, .signup-icon{
+.login-icon, .signup-icon, .hello-msg{
     margin-right: 50px;
     font-size: 25px;
 }
