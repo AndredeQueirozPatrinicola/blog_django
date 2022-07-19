@@ -16,54 +16,18 @@
 <div class="container d-flex flex-wrap align-items-center main-div">
     <h4>Categories</h4>
 </div>
+
 <div class="container d-flex flex-wrap align-items-center main-div">
+{% for categoria in categoria %}
     <div class="card card-post">
-        <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
+        <img class="card-img-top image-post" src="{{ categoria.imagem_categoria.url }}" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">Python</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua..."</p>
+            <h5 class="card-title">{{ categoria.titulo_categoria }}</h5>
+            <p class="card-text">{{ categoria.descricao_categoria }}</p>
             <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
         </div>
     </div>
-    <div class="card card-post">
-        <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
-        <div class="card-body categories">
-            <h5 class="card-title">Django</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua..."</p>
-            <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
-        </div>
-    </div>
-    <div class="card card-post">
-        <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Back-End</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua..."</p>
-            <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
-        </div>
-    </div>
-    <div>
-        <div class="categories card card-post">
-            <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{ categorie.name }</h5>
-                <p class="card-text" style="min-height: 96px;">"{ categorie.description }"</p>
-                <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="categories card card-post">
-            <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{ categorie.name }</h5>
-                <p class="card-text" style="min-height: 96px;">"{ categorie.description }"</p>
-                <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
-            </div>
-        </div>
-    </div>
+{% endfor %}
 </div>
 
 {% endblock %}

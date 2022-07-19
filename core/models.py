@@ -20,7 +20,7 @@ class Categorias(models.Model):
 class Posts(models.Model):
     titulo_post = models.CharField(max_length=20, verbose_name="titulo do post")
     sub_titulo = models.CharField(max_length=100, verbose_name="subtitulo do post")
-    conteudo_post = models.CharField(max_length=10000, verbose_name="conteudo do post")
+    conteudo_post = models.TextField(verbose_name="conteudo do post")
     data_criacao = models.DateTimeField(auto_now=True)
     imagem_post = models.ImageField()
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)

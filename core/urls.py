@@ -16,9 +16,9 @@ urlpatterns = [
 
     path('post-categoria/', views.post_categoria),
 
-#    path('categoria/<int:id_categoria>', views.categoria),
+    path('categorie/<int:id_categoria>', views.show_posts),
+    path('categorie/<int:id_categoria>/post/<int:id_post>', views.post),
 
-    path('post/', views.post)
 ]
 
 

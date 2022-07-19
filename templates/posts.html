@@ -7,13 +7,14 @@
 
 <div class="container d-flex flex-wrap align-items-center main-div">
     <div class="card card-post">
-        <img class="card-img-top image-post" src='static/img/comments-python.jpg' alt="Card image cap">
+        {% for post in post %}
+        <img class='image-post' src="{{ post.imagem_post.url }}" alt="Card image cap"> 
         <div class="card-body">
-            <h5 class="card-title">Python</h5>
-            <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua..."</p>
-            <a href="posts/{{ posts.id }}" class="btn btn-primary button-go">Leia sobre</a>
+            <h5 class="card-title">{{ post.titulo_post }}</h5>
+            <p class="card-text">{{ post.sub_titulo }}</p>
+            <a href="post/{{ post.id }}" class="btn btn-primary button-go">Leia sobre</a>
         </div>
+        {% endfor %}
     </div>
 </div>
 

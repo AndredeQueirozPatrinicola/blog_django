@@ -8,12 +8,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 from .forms import CreateUserForm
-from .models import Posts
+from .models import Categorias, Posts
 
 #from core.models import Categorias
 
 def index(request):
-    return render(request, 'index.html')
+    categoria = Categorias.objects.all()
+    context = {
+        'categoria':categoria
+    }
+    return render(request, 'index.html', context)
 
 
 
@@ -22,10 +26,10 @@ def login_page(request):
 
 
 
-def post(request):
-    post1 = Posts.objects.all()
+def post(request, id_post):
+    post = Posts.objects.filter(id=id_post)
     context = {
-        'post':post1
+        'post':post
     }
     return render(request, 'post.html', context)
 
@@ -34,11 +38,16 @@ def post(request):
 def post_categoria(request):
     return render(request, 'post-cat.html')    
 
-'''
-def categoria(request, id_categoria):
-    categoria_id = Categorias.objects.filter(id = id_categoria)
-    return response()
-'''
+
+def show_posts(request, id_categoria):
+
+    post = Posts.objects.filter(id=id_categoria)
+    context = {
+
+        'post' : post
+    }
+    return render(request, 'posts.html', context)
+
 
 
 def submit_log_in(request):
