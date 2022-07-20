@@ -86,7 +86,7 @@ def submit_signup(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, f"Account was created for {user}")
-            return redirect("/")
+            return redirect("/signup/")
 
         else:
             messages.error(request, "Your Username must be unique")
