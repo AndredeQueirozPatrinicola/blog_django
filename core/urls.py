@@ -17,7 +17,9 @@ urlpatterns = [
     path('post-categoria/', views.post_categoria),
 
     path('categorie/<int:id_categoria>', views.show_posts),
-    path('categorie/<int:id_categoria>/post/<int:id_post>', views.post),
+    path('post/<int:id_post>', views.post),
+
+    path('perfil/<str:username>', views.perfil),
 
 ]
 
