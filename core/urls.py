@@ -15,6 +15,8 @@ urlpatterns = [
     path('logout/', views.logout_user),
 
     path('post-categoria/', views.post_categoria),
+    path('post-design/', views.post_design),
+    path('categorie-design/', views.categorie_design),
 
     path('categorie/<int:id_categoria>', views.show_posts),
     path('post/<int:id_post>', views.post),

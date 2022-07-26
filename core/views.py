@@ -96,3 +96,11 @@ def show_posts(request, id_categoria):
 
 def perfil(request, username):
     return render(request, 'perfil.html')
+
+
+def post_design(request):
+    return render(request, 'post-design.html')
+
+
+def categorie_design(request):
+    return render(request, 'categorie-design.html')
