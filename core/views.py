@@ -99,7 +99,12 @@ def perfil(request, username):
 
 
 def post_design(request):
-    return render(request, 'post-design.html')
+    categoria = Categorias.objects.all
+    context = {
+        'categoria' : categoria
+    }
+
+    return render(request, 'post-design.html', context)
 
 
 def categorie_design(request):

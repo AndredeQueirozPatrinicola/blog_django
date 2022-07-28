@@ -156,6 +156,12 @@ footer {
     border-radius: 10px;
 }
 
+.post-content-input{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    height: 500px;
+}
+
 .div-perfil-esq{
     width: 350px;
     background-color: #d5ebff;
@@ -192,9 +198,27 @@ footer {
     height: auto;
 }
 
+.div-post-content{
+    padding: 25px;
+}
 
+input[type='file']{
+    display: none;
+}
 
+.imagem-post{
+    margin: 10px 0 10px 0;
+    border: 1px solid white;
+    width: 125px;
+    border-radius: 15px;
+    text-align: center;
+    color: #64b0f7;
+    background: #fff;
+}
 
+.imagem-post:hover{
+    color: #a1d0fc;
+}
 
 
 @media only screen and (max-width:1560px){

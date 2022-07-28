@@ -5,9 +5,26 @@
 
 {% block content %}
 
-<div class="container d-flex align-items-center main-div">
-
+<div class="container d-flex flex-column main-div div-post-content">
+    <form class="d-flex flex-column" action="submit" method="post">{% csrf_token %}
+        <label>Titulo: </label>
+        <input class="input-login">
+        <label>Sub-Titulo: </label>
+        <input  class="input-login">
+        <label>Post: </label>
+        <textarea class="post-content-input"></textarea>
+        <input type="file" id="img" name="img" accept="image/*">
+        <label for="img" class="imagem-post">Escolha uma imagem</label>
+        <label>Categoria: </label>
+        <select name="categorias">
+            {% for categoria in categoria %}
+            <option value="{{ categoria.titulo_categoria }}">{{ categoria.titulo_categoria }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="login-button">Post!</button>
+    </form>
 </div>
 
 
 {% endblock %}
+
