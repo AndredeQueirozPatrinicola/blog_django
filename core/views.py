@@ -100,6 +100,7 @@ def perfil(request, username):
 
 def post_design(request):
     categoria = Categorias.objects.all
+    print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
     context = {
         'categoria' : categoria
     }
@@ -109,3 +110,29 @@ def post_design(request):
 
 def categorie_design(request):
     return render(request, 'categorie-design.html')
+
+
+
+def submit_post(request):
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        subtitulo = request.POST.get('subtitulo')
+        textarea = request.POST.get('textarea')
+        img = request.POST.get('img')
+        categoria_post = request.POST.get('categoria')
+        autor_post = request.user
+
+
+        cat = Categorias.objects.filter()
+
+        post = Posts(titulo_post=titulo,
+                        sub_titulo=subtitulo,
+                        conteudo_post = textarea,
+                        imagem_post = img,
+                        categoria = categoria_post,
+                        autor = autor_post
+                        )
+
+        post.save()
+
+        return redirect('/')

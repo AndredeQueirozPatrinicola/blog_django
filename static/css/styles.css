@@ -220,6 +220,9 @@ input[type='file']{
     color: #a1d0fc;
 }
 
+.erro-span{
+    color: #fff;
+}
 
 @media only screen and (max-width:1560px){
 
