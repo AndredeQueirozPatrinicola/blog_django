@@ -5,5 +5,17 @@
 
 {% block content %}
 
+<div class="container d-flex flex-column main-div div-post-content">
+    <form class="d-flex flex-column" action="submit" method="post">{% csrf_token %}
+        <label>Titulo: </label>
+        <input class="input-login" name="titulo">
+        <label>Descrição: </label>
+        <textarea class="post-content-input" name="descricao"></textarea>
+        <input type="file" id="img" name="img" accept="image/*">
+        <label for="img" class="imagem-post">Escolha uma imagem</label>
+        <button type="submit" class="login-button">Post!</button>
+    </form>
+</div>
+
 
 {% endblock %}

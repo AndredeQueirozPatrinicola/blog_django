@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Categorias(models.Model):
     titulo_categoria = models.CharField(max_length=20, verbose_name="titulo da categoria")
     descricao_categoria = models.CharField(max_length=100, verbose_name="descrição da categoria")
-    imagem_categoria = models.ImageField()
+    imagem_categoria = models.ImageField(upload_to='images/', null=True)
 
 
     class Meta:

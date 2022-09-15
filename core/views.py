@@ -1,4 +1,5 @@
 from distutils import log
+from email.mime import image
 from multiprocessing import context
 from urllib import response
 from django.shortcuts import redirect, render
@@ -53,7 +54,7 @@ def submit_signup(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, f"Account was created for {user}")
-            return redirect("/signup/")
+            return redirect("/")
 
         else:
             messages.error(request, "Your Username must be unique")
@@ -100,7 +101,7 @@ def perfil(request, username):
 
 def post_design(request):
     categoria = Categorias.objects.all
-    print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
+   # print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
     context = {
         'categoria' : categoria
     }
@@ -136,3 +137,19 @@ def submit_post(request):
         post.save()
 
         return redirect('/')
+
+
+def submit_categoria(request):
+    if request.method == "POST":
+        titulo = request.POST.get('titulo')
+        descricao = request.POST.get('descricao')
+        imagem = request.POST.get('img')
+
+
+    categoria = Categorias(titulo_categoria=titulo,
+                            descricao_categoria= descricao,
+                            imagem_categoria = imagem)
+
+    categoria.save()
+
+    return redirect('/')

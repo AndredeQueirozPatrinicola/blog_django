@@ -18,6 +18,7 @@ urlpatterns = [
     path('post-design/', views.post_design),
     path('categorie-design/', views.categorie_design),
     path('post-design/submit', views.submit_post),
+    path('categorie-design/submit', views.submit_categoria),
 
     path('categorie/<int:id_categoria>', views.show_posts),
     path('post/<int:id_post>', views.post),
