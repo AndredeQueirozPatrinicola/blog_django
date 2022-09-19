@@ -6,19 +6,19 @@
 
 {% block content %}
 
-<div class="d-flex div-perfil">
+<div class="d-flex div-perfil" id="div-perfil">
     <div class="d-flex flex-column div-perfil-esq">
-        <div>
+        <div class="img-container">
             <img src="{% static 'img/logo.png' %}" class="imagem-perfil">
         </div>
         <div class="d-flex flex-column">
-                <p class="list-infos-perfil"><strong>Username:</strong> {{ user.username }}</p>
+                <a class="list-infos-perfil" id="editar-perfil" href="#"><strong>Username:</strong> {{ user.username }}</a>
                 <p class="list-infos-perfil"><strong>Fullname:</strong> {{ user.first_name }} {{ user.last_name }}</p>
                 <p class="list-infos-perfil"><strong>E-mail:</strong> {{ user.email }}</p>
                 <p class="list-infos-perfil"><strong>Descrição: </strong> Eu sou MUITO legal</p>
         </div>
     </div>
-    <div class="div-perfil-meio">
+    <div class="div-perfil-meio" id="div-perfil-meio">
         
     </div>
     <div class="div-perfil-dir">

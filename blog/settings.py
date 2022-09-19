@@ -88,17 +88,17 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
 
-        'NAME': '',
+        'NAME': 'blog',
 
-        'USER': '',
+        'USER': 'andre',
 
-        'PASSWORD': '',
+        'PASSWORD': 'andre123',
 
-        'HOST': '',
+        'HOST': 'localhost',
 
-        'PORT': '5432',
+        'PORT': '3306',
 
     }
 

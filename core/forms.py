@@ -1,4 +1,3 @@
-from tkinter import Widget
 from django import forms
 from django.forms import ModelForm, widgets
 from django.contrib.auth.models import User
