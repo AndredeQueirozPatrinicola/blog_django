@@ -183,14 +183,25 @@ footer {
     border: 1px solid #0888ff;
 }
 
-.list-infos-perfil{
+.list-infos-perfil, .editar-infos-perfil{
     list-style-type: none;
     margin: 10px;
     color: #0888ff;
     border: 1px solid #0888ff;
     border-radius: 10px;
     padding: 5px;
+    text-decoration: none;
+    transition: 500ms;
 }
+
+.editar-infos-perfil{
+    border-radius: 0 !important;
+}
+
+.editar-infos-perfil:hover{
+    border-radius: 20px !important;
+}
+
 
 .image-post{
     width: 1100px;

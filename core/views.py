@@ -1,7 +1,4 @@
-from distutils import log
-from email.mime import image
 from multiprocessing import context
-from urllib import response
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -10,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-from .forms import CreateUserForm
+from .forms import CreateUserForm, SubmitCategoriaForm, SubmitPostForm
 from .models import Categorias, Posts
 
 
@@ -95,61 +92,86 @@ def show_posts(request, id_categoria):
     return render(request, 'posts.html', context)
 
 
-def perfil(request, username):
+def perfil(request):
     return render(request, 'perfil.html')
 
 
 def post_design(request):
     categoria = Categorias.objects.all
    # print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
+    
+    form = SubmitPostForm()
+
     context = {
-        'categoria' : categoria
+        'categoria' : categoria,
+        'form' : form
     }
 
     return render(request, 'post-design.html', context)
 
 
 def categorie_design(request):
-    return render(request, 'categorie-design.html')
+    form = SubmitCategoriaForm()
+
+    context = {
+        'form' : form
+    }
+
+    return render(request, 'categorie-design.html', context)
 
 
 
 def submit_post(request):
+       
+    form = SubmitPostForm()
+
     if request.method == 'POST':
-        titulo = request.POST.get('titulo')
-        subtitulo = request.POST.get('subtitulo')
-        textarea = request.POST.get('textarea')
-        img = request.POST.get('img')
-        categoria_post = request.POST.get('categoria')
-        autor_post = request.user
 
+        form = SubmitPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            print('validou')
+            form.save()
 
-        cat = Categorias.objects.filter()
+            return redirect(f'/')
+        
+        else:
+            print(form.cleaned_data)
+            print('nao ta certo')
+            return redirect('/post-design/')
 
-        post = Posts(titulo_post=titulo,
-                        sub_titulo=subtitulo,
-                        conteudo_post = textarea,
-                        imagem_post = img,
-                        categoria = categoria_post,
-                        autor = autor_post
-                        )
-
-        post.save()
-
-        return redirect('/')
 
 
 def submit_categoria(request):
-    if request.method == "POST":
-        titulo = request.POST.get('titulo')
-        descricao = request.POST.get('descricao')
-        imagem = request.POST.get('img')
+   
+    form = SubmitCategoriaForm()
+
+    if request.method == 'POST':
+
+        form = SubmitCategoriaForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+            print('validou')
+            form.save()
+
+            return redirect('/')
+        
+        else:
+            print(form.cleaned_data)
+            print('nao ta certo')
+            return redirect('/categorie-design/')
+            
 
 
-    categoria = Categorias(titulo_categoria=titulo,
-                            descricao_categoria= descricao,
-                            imagem_categoria = imagem)
+    # if request.method == "POST":
+    #     titulo = request.POST.get('titulo')
+    #     descricao = request.POST.get('descricao')
+    #     imagem = request.POST.get('img')
 
-    categoria.save()
+
+    # categoria = Categorias(titulo_categoria=titulo,
+    #                         descricao_categoria= descricao,
+    #                         imagem_categoria = imagem)
+
+    # categoria.save()
 
     return redirect('/')

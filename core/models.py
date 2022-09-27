@@ -22,7 +22,7 @@ class Posts(models.Model):
     sub_titulo = models.CharField(max_length=100, verbose_name="subtitulo do post")
     conteudo_post = models.TextField(verbose_name="conteudo do post")
     data_criacao = models.DateTimeField(auto_now=True)
-    imagem_post = models.ImageField()
+    imagem_post = models.ImageField(upload_to='images/', null=True)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
     autor = models.ForeignKey(User,on_delete=models.CASCADE)
 

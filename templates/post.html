@@ -7,7 +7,7 @@
 
 
 {% for post in post %}
-<div class="container align-items-center main-div">
+<div class="container align-items-center main-div d-flex flex-wrap">
     <div>
         <h2>{{ post.titulo_post }}</h2>
     </div>
@@ -18,7 +18,7 @@
          <img class='image-post' src="{{ post.imagem_post.url }}">
     </div>
     <div>
-        <p>{{ post.conteudo_post }}</p>
+        {{ post.conteudo_post }}
     </div>
 {% endfor %}
 </div>

@@ -1,0 +1,19 @@
+{% load static %}
+<div class="d-flex flex-column div-perfil-esq">
+    <div class="img-container">
+        {% if user.imagem %}
+        <img src="{{ user.imagem.url }}" class="imagem-perfil">
+        {% else %}
+        <img src="{% static 'img/avatar2.jpg' %}" class="imagem-perfil">
+        {% endif %}
+    </div>
+    <div>
+        <a class="editar-infos-perfil" href="#">Editar</a>
+    </div>
+    <div class="d-flex flex-column">
+            <p class="list-infos-perfil" id="editar-perfil"><strong>Username:</strong> {{ user.username }}</p>
+            <p class="list-infos-perfil"><strong>Fullname:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p class="list-infos-perfil"><strong>E-mail:</strong> {{ user.email }}</p>
+            <p class="list-infos-perfil"><strong>Descrição: </strong> Eu sou MUITO legal</p>
+    </div>
+</div>

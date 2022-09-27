@@ -23,7 +23,7 @@ urlpatterns = [
     path('categorie/<int:id_categoria>', views.show_posts),
     path('post/<int:id_post>', views.post),
 
-    path('perfil/<str:username>', views.perfil),
+    path('perfil', views.perfil),
 
 ]
 

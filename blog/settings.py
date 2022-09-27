@@ -92,9 +92,9 @@ DATABASES = {
 
         'NAME': 'blog',
 
-        'USER': 'andre',
+        'USER': 'root',
 
-        'PASSWORD': 'andre123',
+        'PASSWORD': 'andre12345',
 
         'HOST': 'localhost',
 
