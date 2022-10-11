@@ -24,8 +24,8 @@ urlpatterns = [
     path('post/<int:id_post>', views.post),
 
     path('perfil', views.perfil),
+    path('editar-perfil', views.editar_perfil)
 
 ]
-
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

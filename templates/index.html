@@ -4,7 +4,7 @@
 {% block title %}Welcome | {% endblock %}
 
 {% block content %}
-<div class="container d-flex flex-wrap align-items-center main-div">
+<div class="container d-flex flex-wrap align-items-center main-div shadow">
     <h4>Welcome do Django Blog!</h4>
     <p class="main-paragraph">
         This blog was created to practice some Django concepts. The idea it's a blog with all the funcionalites like
@@ -13,14 +13,14 @@
         Choose your categorie and start reading about!
     </p>
 </div>
-<div class="container d-flex flex-wrap align-items-center main-div">
+<div class="container d-flex flex-wrap align-items-center main-div shadow">
     <h4>Categories</h4>
 </div>
 
-<div class="container d-flex flex-wrap align-items-center main-div">
+<div class="container d-flex flex-wrap align-items-center main-div shadow">
 {% for categoria in categoria %}
-    <div class="card card-post">
-        <img class="card-img-top image-post" src="{{ categoria.imagem_categoria.url }}" alt="Card image cap">
+    <div class="card card-post shadow">
+        <img class="card-img-top image-post shadow" src="{{ categoria.imagem_categoria.url }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ categoria.titulo_categoria }}</h5>
             <p class="card-text">{{ categoria.descricao_categoria }}</p>

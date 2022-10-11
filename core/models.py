@@ -33,3 +33,12 @@ class Posts(models.Model):
     def __str__(self):
         return self.titulo_post
 
+
+class Person(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    imagem = models.ImageField(upload_to='images/', null=True)
+    descricao = models.TextField(max_length=400)
+
+
+    def __str__(self):
+        return str(self.user)

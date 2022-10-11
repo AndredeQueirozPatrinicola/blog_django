@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Categorias, Posts
+from core.models import Categorias, Posts, Person
 
 # Register your models here.
 
@@ -13,3 +13,9 @@ class CategoriasAdmin(admin.ModelAdmin):
     list_display = ('id' , 'titulo_categoria', 'imagem_categoria')
     
 admin.site.register(Categorias, CategoriasAdmin)
+
+
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ('user', 'descricao', 'imagem')
+
+admin.site.register(Person, PersonAdmin)

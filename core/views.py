@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 
 from .forms import CreateUserForm, SubmitCategoriaForm, SubmitPostForm
 from .models import Categorias, Posts
+from .utils import auto_login
 
 
 #Login/Signup controller
@@ -28,7 +29,7 @@ def registerUser(request):
     return render(request, 'signup.html', context)
 
 
-def submit_log_in(request):
+def submit_log_in(request, **kwargs):
     
     if request.POST:
         username = request.POST.get('username')
@@ -36,11 +37,12 @@ def submit_log_in(request):
         usuario = authenticate(username=username, password=password)
         if usuario is not None:
             login(request, usuario)
+            
             return redirect('/')
         else:
             messages.error(request, "Invalid user or password")
             return redirect('/login/')
-
+    
 
 def submit_signup(request):
     form = CreateUserForm()
@@ -96,6 +98,12 @@ def perfil(request):
     return render(request, 'perfil.html')
 
 
+def editar_perfil(request):
+    # forms = 
+
+    return render(request, 'edit-perfil.html')
+
+
 def post_design(request):
     categoria = Categorias.objects.all
    # print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
@@ -107,7 +115,7 @@ def post_design(request):
         'form' : form
     }
 
-    return render(request, 'post-design.html', context)
+    return render(request, 'design-post-categ.html', context)
 
 
 def categorie_design(request):
@@ -117,7 +125,7 @@ def categorie_design(request):
         'form' : form
     }
 
-    return render(request, 'categorie-design.html', context)
+    return render(request, 'design-post-categ.html', context)
 
 
 
@@ -127,10 +135,11 @@ def submit_post(request):
 
     if request.method == 'POST':
 
-        form = SubmitPostForm(request.POST, request.FILES)
+        form = SubmitPostForm(request.POST, request.FILES, request.user)
         if form.is_valid():
             print('validou')
             form.save()
+
 
             return redirect(f'/')
         
@@ -159,19 +168,5 @@ def submit_categoria(request):
             print(form.cleaned_data)
             print('nao ta certo')
             return redirect('/categorie-design/')
-            
-
-
-    # if request.method == "POST":
-    #     titulo = request.POST.get('titulo')
-    #     descricao = request.POST.get('descricao')
-    #     imagem = request.POST.get('img')
-
-
-    # categoria = Categorias(titulo_categoria=titulo,
-    #                         descricao_categoria= descricao,
-    #                         imagem_categoria = imagem)
-
-    # categoria.save()
 
     return redirect('/')

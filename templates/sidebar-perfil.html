@@ -1,19 +1,19 @@
 {% load static %}
-<div class="d-flex flex-column div-perfil-esq">
+<div class="d-flex flex-column div-perfil-esq shadow">
     <div class="img-container">
-        {% if user.imagem %}
-        <img src="{{ user.imagem.url }}" class="imagem-perfil">
+        {% if user.person.imagem %}
+        <img src="{{ user.person.imagem.url }}" class="imagem-perfil shadow">
         {% else %}
-        <img src="{% static 'img/avatar2.jpg' %}" class="imagem-perfil">
+        <img src="{% static 'img/avatar2.jpg' %}" class="imagem-perfil shadow">
         {% endif %}
     </div>
     <div>
-        <a class="editar-infos-perfil" href="#">Editar</a>
+        <a class="editar-infos-perfil shadow" href="editar-perfil">Editar</a>
     </div>
     <div class="d-flex flex-column">
-            <p class="list-infos-perfil" id="editar-perfil"><strong>Username:</strong> {{ user.username }}</p>
-            <p class="list-infos-perfil"><strong>Fullname:</strong> {{ user.first_name }} {{ user.last_name }}</p>
-            <p class="list-infos-perfil"><strong>E-mail:</strong> {{ user.email }}</p>
-            <p class="list-infos-perfil"><strong>Descrição: </strong> Eu sou MUITO legal</p>
+            <p class="list-infos-perfil shadow" id="editar-perfil"><strong>Username:</strong> {{ user.username }}</p>
+            <p class="list-infos-perfil shadow"><strong>Fullname:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p class="list-infos-perfil shadow"><strong>E-mail:</strong> {{ user.email }}</p>
+            <p class="list-infos-perfil shadow"><strong>Descrição: </strong>{{ user.person.descricao }}</p>
     </div>
 </div>
