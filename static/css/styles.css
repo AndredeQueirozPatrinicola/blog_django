@@ -274,7 +274,24 @@ input[type='file']{
 }
 
 .div-edit-perfil{
-    border: 1px solid black;
+    width: 1000px;
+}
+
+.close-edit-perfil{
+    border: 1px solid;
+    width: 29px;
+    text-align: center;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #64b0f7;
+}
+
+.close-edit-perfil:hover{
+    color: #a1d0fc;
+}
+
+.text-dec-none{
+    text-decoration: none;
 }
 
 
