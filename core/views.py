@@ -93,17 +93,20 @@ def show_posts(request, id_categoria):
     }
     return render(request, 'posts.html', context)
 
+@login_required(login_url="/")
+def perfil(request, id_user):
+    context = {
+        'user' : id_user
+    }
+    return render(request, 'perfil.html', context)
 
-def perfil(request):
-    return render(request, 'perfil.html')
-
-
+@login_required(login_url="/")
 def editar_perfil(request):
     # forms = 
 
     return render(request, 'edit-perfil.html')
 
-
+@login_required(login_url="/")
 def post_design(request):
     categoria = Categorias.objects.all
    # print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
@@ -117,7 +120,7 @@ def post_design(request):
 
     return render(request, 'design-post-categ.html', context)
 
-
+@login_required(login_url="/")
 def categorie_design(request):
     form = SubmitCategoriaForm()
 
@@ -128,7 +131,7 @@ def categorie_design(request):
     return render(request, 'design-post-categ.html', context)
 
 
-
+@login_required(login_url="/")
 def submit_post(request):
        
     form = SubmitPostForm()
@@ -149,7 +152,7 @@ def submit_post(request):
             return redirect('/post-design/')
 
 
-
+@login_required(login_url="/")
 def submit_categoria(request):
    
     form = SubmitCategoriaForm()
