@@ -94,10 +94,7 @@ def show_posts(request, id_categoria):
     return render(request, 'posts.html', context)
 
 @login_required(login_url="/")
-def perfil(request, id_user):
-    context = {
-        'user' : id_user
-    }
+def perfil(request):
     return render(request, 'perfil.html', context)
 
 @login_required(login_url="/")
