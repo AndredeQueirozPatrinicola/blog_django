@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 
 from pathlib import Path
-
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,23 +85,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 #}
 
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.mysql',
-
-        'NAME': 'blog',
-
-        'USER': 'root',
-
-        'PASSWORD': 'andre12345',
-
-        'HOST': 'localhost',
-
-        'PORT': '3306',
-
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': config('DBNAME'),
+        'USER': config('DBUSER'),
+        'PASSWORD': config('DBPASSWORD'),
+        'HOST': config('DBHOST'),   # Or an IP Address that your DB is hosted on
+        'PORT': config('DBPORT'),
     }
-
 }
 
 
