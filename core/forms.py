@@ -43,6 +43,6 @@ class SubmitPostForm(ModelForm):
             'titulo_post' : forms.TextInput(attrs={'class':'input-login'}),
             'sub_titulo' : forms.TextInput(attrs={'class':'input-login'}),
             'conteudo_post' : forms.Textarea(attrs={'class':'post-content-input'}),
-        #     'imagem_post' : forms.ImageField(),
-        }
-
+            'autor' : forms.Textarea(attrs={'id':'autor', 'value': '', 'type': 'hidden'})
+       }
+        labels={'autor': ''}

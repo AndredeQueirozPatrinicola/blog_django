@@ -7,18 +7,25 @@
 
 
 {% for post in post %}
-<div class="container align-items-center main-div d-flex flex-wrap flex-column shadow">
+<div class="container d-flex mb-1 autor-date">
+
+    <h6 id="autor-name">{{ autor }} </h6>
+
+    <h6>- {{ post.data_criacao }}</h6>
+
+</div>
+<div class="container align-items-center main-div d-flex flex-wrap flex-column shadow mt-0">
     <div>
-        <h2>{{ post.titulo_post }}</h2>
+        <h2 class="post-titulo">{{ post.titulo_post }}</h2>
     </div>
     <div>
-        <h5>{{ post.sub_titulo }}</h5>
+        <h5 class="post-sub-titulo">{{ post.sub_titulo }}</h5>
     </div>
     <div>
          <img class='image-post' src="{{ post.imagem_post.url }}">
     </div>
     <div class="d-flex flex-column">
-        <p style="white-space: pre-line;">
+        <p class="post-conteudo">
         {{ post.conteudo_post }}
         </p>
     </div>

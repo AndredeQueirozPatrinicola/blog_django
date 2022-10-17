@@ -18,6 +18,7 @@ def login_page(request):
     return render(request, 'login.html')
 
 
+@login_required(login_url="/")
 def logout_user(request):
     logout(request)
     return redirect('/')
@@ -43,7 +44,7 @@ def submit_log_in(request, **kwargs):
             messages.error(request, "Invalid user or password")
             return redirect('/login/')
     
-
+@login_required(login_url="/")
 def submit_signup(request):
     form = CreateUserForm()
 
@@ -80,8 +81,11 @@ def post_categoria(request):
 
 def post(request, id_post):
     post = Posts.objects.filter(id=id_post)
+    conteudo = post.values()[0].get('autor_id')
+    autor = User.objects.get(id=conteudo)
     context = {
-        'post':post
+        'post':post,
+        'autor' : autor
     }
     return render(request, 'post.html', context)
 
@@ -95,6 +99,7 @@ def show_posts(request, id_categoria):
 
 @login_required(login_url="/")
 def perfil(request):
+    context = {}
     return render(request, 'perfil.html', context)
 
 @login_required(login_url="/")

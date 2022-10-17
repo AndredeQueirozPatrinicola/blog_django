@@ -8,19 +8,29 @@
 <div class="container d-flex flex-column main-div div-post-content">
     <form class="d-flex flex-column" action="submit" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        
-        
+
+
         {{ form }}
 
         <button type="submit" class="login-button">Post!</button>
     </form>
     {% for message in messages %}
 
-        {{ messages }}
+    {{ messages }}
 
     {% endfor %}
 </div>
 
+<script>
+
+    const user = '{{ user.id }}';
+    const autor = document.getElementById('autor');
+    if (autor) {
+        autor.value = user;
+        autor.style.display = 'none';
+    }
+
+</script>
+
 
 {% endblock %}
-

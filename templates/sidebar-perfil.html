@@ -1,5 +1,5 @@
 {% load static %}
-<div class="d-flex flex-column div-perfil-esq shadow">
+<div class="d-flex flex-column div-perfil-esq shadow" id="sidebar-perfil">
     <div class="img-container">
         {% if user.person.imagem %}
         <img src="{{ user.person.imagem.url }}" class="imagem-perfil shadow">

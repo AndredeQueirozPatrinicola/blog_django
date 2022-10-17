@@ -5,17 +5,28 @@
 
 {% block content %}
 
+{% if post %}
 <div class="container d-flex flex-wrap align-items-center main-div shadow">
+    {% for post in post %}
     <div class="card card-post">
-        {% for post in post %}
         <img class='image-post' src="{{ post.imagem_post.url }}" alt="Card image cap"> 
         <div class="card-body">
             <h5 class="card-title">{{ post.titulo_post }}</h5>
             <p class="card-text">{{ post.sub_titulo }}</p>
             <a href="/post/{{ post.id }}" class="btn btn-primary button-go">Leia sobre</a>
         </div>
-        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="container d-flex flex-wrap align-items-center main-div shadow">
+    <div class="no-post shadow">
+        <div class="no-post-children shadow">
+            <h4 class="font-sorry">Sorry...</h4>
+            <h6 class="font-no-post">No posts in this categorie</h6>
+        </div>
     </div>
 </div>
+{% endif %}
 
 {% endblock %}

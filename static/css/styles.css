@@ -7,11 +7,28 @@ html, body{
     background-color: #64b0f7;
 }
 
+.nav-fixed{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+    bottom: 3;
+}
+
+#sidebar-perfil{
+    position: fixed;
+    height: 100%;
+}
+
 footer {
     margin-top: 30px;
     width: 100%;
     height: 80px;
     background-color: #64b0f7;
+}
+
+#base{
+    margin-top: 6rem;
 }
 
 .chat-title{
@@ -257,6 +274,57 @@ input[type='file']{
 
 .shadow{
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+}
+
+.autor-date{
+    white-space: break-spaces;
+    margin-top: 6rem;
+}
+
+.post-conteudo{
+    white-space: pre-line;
+    font-size: 1.55rem;
+    text-align: justify;
+    margin-right: 40px;
+}
+
+.no-post{
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px;
+    width: 100%;
+    height: 500px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-post-children{
+    background-color: #eee;
+    padding: 85px;
+    border-radius: 10px;
+}
+
+.font-sorry{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.font-no-post{
+    font-size: 2rem;
+    font-weight: lighter;
+}
+
+.post-titulo{
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+.post-sub-titulo{
+    font-size: 1.8rem;
 }
 
 .edit-perfil{
