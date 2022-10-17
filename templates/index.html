@@ -13,6 +13,7 @@
         Choose your categorie and start reading about!
     </p>
 </div>
+{% if categoria %}
 <div class="container d-flex flex-wrap align-items-center main-div shadow">
     <h4>Categories</h4>
 </div>
@@ -28,6 +29,16 @@
         </div>
     </div>
 {% endfor %}
+{% else %}
+<div class="container d-flex flex-wrap align-items-center main-div shadow">
+    <div class="no-post shadow">
+        <div class="no-post-children shadow">
+            <h4 class="font-sorry">Sorry...</h4>
+            <h6 class="font-no-post">Any categorie registered.</h6>
+        </div>
+    </div>
+</div>
+{% endif %}
 </div>
 
 {% endblock %}

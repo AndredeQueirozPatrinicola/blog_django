@@ -28,9 +28,20 @@
             {% if request.user.is_authenticated %}
             <a href="/perfil" class="login-icon">Hello, {{ user.get_username }}</a>
 
-            <a href="/post-categoria/" class='login-icon'>Post!</a>
-
-            <a href="/logout/" class="signup-icon">Log out</a>
+            <!-- <a href="/post-categoria/" class='login-icon'>Post!</a> -->
+              
+            <!-- <a href="/logout/" class="signup-icon">Log out</a> -->
+            <div class="">
+                <button type="button" class="signup-icon dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                  XXX
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end me-4">
+                  <li><a href="/post-categoria/" class='dropdown-item'>Post!</a></li>
+                  <li><a href="/perfil" class="dropdown-item">Settings</a></li>
+                  <li><a href="/logout/" class="dropdown-item">Log out</a></li>
+                </ul>
+              </div>
+              
 
             {% else %}
             <a href="/login/" class='login-icon'>Log In</a>
