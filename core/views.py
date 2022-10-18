@@ -44,17 +44,17 @@ def submit_log_in(request, **kwargs):
             messages.error(request, "Invalid user or password")
             return redirect('/login/')
     
-@login_required(login_url="/")
+
+
 def submit_signup(request):
     form = CreateUserForm()
-
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, f"Account was created for {user}")
-            return redirect("/")
+            return redirect("/signup/")
 
         else:
             messages.error(request, "Your Username must be unique")
@@ -62,14 +62,10 @@ def submit_signup(request):
             messages.error(request, "Your password must be different from your username")
             return redirect('/signup/')
 
-
-
-#Render pages, DB Queries
-
 def index(request):
     categoria = Categorias.objects.all()
     context = {
-        'categoria':categoria
+    'categoria':categoria
     }
     return render(request, 'index.html', context)
 
@@ -97,10 +93,12 @@ def show_posts(request, id_categoria):
     }
     return render(request, 'posts.html', context)
 
+
 @login_required(login_url="/")
 def perfil(request):
     context = {}
     return render(request, 'perfil.html', context)
+
 
 @login_required(login_url="/")
 def editar_perfil(request):
@@ -108,11 +106,10 @@ def editar_perfil(request):
 
     return render(request, 'edit-perfil.html')
 
+
 @login_required(login_url="/")
 def post_design(request):
     categoria = Categorias.objects.all
-   # print(Categorias.objects.get(titulo_categoria = 'Django').values_list('id', flat=True))
-    
     form = SubmitPostForm()
 
     context = {
@@ -121,6 +118,7 @@ def post_design(request):
     }
 
     return render(request, 'design-post-categ.html', context)
+
 
 @login_required(login_url="/")
 def categorie_design(request):
