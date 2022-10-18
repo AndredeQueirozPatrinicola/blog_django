@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 
+from email.policy import default
 from pathlib import Path
 import django_heroku
 from decouple import config
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='3821798217ec1928edsa2')
 
 DEBUG = config('DEBUG', cast=bool, default=True)
 
