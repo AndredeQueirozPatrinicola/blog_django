@@ -1,8 +1,10 @@
-from django.urls import path
+from django.urls import path, include, re_path
 from core import views
 from django.contrib.auth import views as auth_views
 
+
 from django.conf.urls.static import static
+from django.views.static import serve
 from django.conf import settings
 
 urlpatterns = [
@@ -24,7 +26,9 @@ urlpatterns = [
     path('post/<int:id_post>', views.post),
 
     path('perfil', views.perfil),
-    path('editar-perfil', views.editar_perfil)
+    path('editar-perfil', views.editar_perfil),
+
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 
 ]
 

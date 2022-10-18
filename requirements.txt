@@ -1,6 +1,15 @@
 asgiref==3.5.2
+dj-database-url==1.0.0
 Django==4.1.1
+django-heroku==0.3.1
+flake8==5.0.4
+gunicorn==20.1.0
+mccabe==0.7.0
+mysqlclient==2.1.1
 Pillow==9.2.0
-psycopg2==2.9.3
+psycopg2==2.9.4
+pycodestyle==2.9.1
+pyflakes==2.5.0
+python-decouple==3.6
 sqlparse==0.4.2
-tzdata==2022.2
+whitenoise==6.2.0
