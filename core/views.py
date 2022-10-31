@@ -66,7 +66,8 @@ def submit_signup(request):
 def index(request):
     categoria = Categorias.objects.all()
     context = {
-    'categoria':categoria
+    'categoria':categoria,
+    'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
     }
     return render(request, 'index.html', context)
 
@@ -82,7 +83,8 @@ def post(request, id_post):
     autor = User.objects.get(id=conteudo)
     context = {
         'post':post,
-        'autor' : autor
+        'autor' : autor,
+    'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
     }
     return render(request, 'post.html', context)
 
@@ -90,7 +92,8 @@ def post(request, id_post):
 def show_posts(request, id_categoria):
     post = Posts.objects.filter(categoria=id_categoria)
     context = {
-        'post' : post
+        'post' : post,
+    'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
     }
     return render(request, 'posts.html', context)
 
