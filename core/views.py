@@ -106,6 +106,8 @@ def perfil(request, id_user):
 def editar_perfil(request, id_user):
     userconf = User.objects.filter(id=id_user).values('username', 'first_name', 'last_name')
     userinfo = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
+    userinfo = [i for i in userinfo]
+    userinfo.append({})
     context = {
         'userconf' : userconf,
         'userinfo' : userinfo

@@ -22,10 +22,11 @@
 
                 <div class="container d-flex flex-column main-div div-post-content div-edit-perfil">
 
-                    {% for i in userconf %}
-                    {% for j in userinfo %}
+
                     <!-- {{ j.imagem }}<br> -->
                     <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit" id="edit-perf">
+                        {% for j in userinfo %}
+                        {% for i in userconf %}
                         {% csrf_token %}
 
                         <label>Username:</label>
@@ -47,17 +48,19 @@
 
                         <label>Descição: </label>
                         {% if j.descricao %}
-                        <textarea type="text" value="{{ j.descricao }}" class="input-login hei">{{ j.descricao }}</textarea>
+                        <textarea type="text" value="{{ j.descricao }}"
+                            class="input-login hei">{{ j.descricao }}</textarea>
                         {% else %}
                         <textarea type="text" placeholder="Descição..." class="input-login"></textarea>
                         {% endif %}
 
                         <button type="submit" class="login-button">Submit</button>
+
+                        {% endfor %}
+
+                        {% endfor %}
                     </form>
 
-                    {% endfor %}
-
-                    {% endfor %}
 
                 </div>
 

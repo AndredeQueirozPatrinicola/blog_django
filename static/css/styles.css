@@ -366,6 +366,11 @@ input[type='file']{
     height: 250px;
 }
 
+.alt-image{
+    text-align: center;
+    padding: 37px;
+}
+
 
 @media only screen and (max-width:1560px){
 

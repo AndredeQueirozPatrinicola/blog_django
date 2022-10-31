@@ -21,8 +21,12 @@
 <div class="container d-flex flex-wrap align-items-center main-div shadow">
 {% for categoria in categoria %}
     <div class="card card-post shadow">
-        <img class="card-img-top image-post shadow" src="{{ categoria.imagem_categoria.url }}" alt="Card image cap">
-        <div class="card-body">
+        {% if categoria.imaagem_categoria.url %}
+            <img class="card-img-top image-post shadow" src="{{ categoria.imagem_categoria.url }}" alt="Card image cap">
+        {% else %}
+            <div class="card-img-top image-post shadow alt-image">Este é um projeto para estudo. O servidor do Heroku apaga imagens inseridas pelo usuário periodicamente</div>
+        {% endif %}
+            <div class="card-body">
             <h5 class="card-title">{{ categoria.titulo_categoria }}</h5>
             <p class="card-text">{{ categoria.descricao_categoria }}</p>
             <a href="categorie/{{ categoria.id }}" class="btn btn-primary button-go">Leia sobre</a>
