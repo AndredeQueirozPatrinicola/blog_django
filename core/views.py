@@ -84,7 +84,7 @@ def post(request, id_post):
     context = {
         'post':post,
         'autor' : autor,
-    'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
+        'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
     }
     return render(request, 'post.html', context)
 
@@ -93,7 +93,7 @@ def show_posts(request, id_categoria):
     post = Posts.objects.filter(categoria=id_categoria)
     context = {
         'post' : post,
-    'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
+        'image_cap' : "O servidor gratuito do Heroku Apaga a imagem da postagem depois de um tempo"
     }
     return render(request, 'posts.html', context)
 

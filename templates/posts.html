@@ -9,7 +9,7 @@
 <div class="container d-flex flex-wrap align-items-center main-div shadow">
     {% for post in post %}
     <div class="card card-post">
-        <img class='image-post' src="{{ post.imagem_post.url }}" alt="Card image cap"> 
+        <img class='image-post' src="{{ post.imagem_post.url }}" alt="{{ image_cap }}"> 
         <div class="card-body">
             <h5 class="card-title">{{ post.titulo_post }}</h5>
             <p class="card-text">{{ post.sub_titulo }}</p>
