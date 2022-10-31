@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from core.models import Categorias, Posts, User
+from core.models import Categorias, Person, Posts, User
 from core import models
 
 
@@ -46,3 +46,10 @@ class SubmitPostForm(ModelForm):
             'autor' : forms.Textarea(attrs={'id':'autor', 'value': '', 'type': 'hidden'})
        }
         labels={'autor': ''}
+
+
+class EditPerfilForm(ModelForm):
+    class Meta:
+        models = Person
+        fields = ['user', 'imagem', 'descricao']
+        

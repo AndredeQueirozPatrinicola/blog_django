@@ -12,17 +12,52 @@
 
     <div class="div-perfil-meio" id="div-perfil-meio">
 
-        <div class="edit-perfil">
+        <div class="edit-perfil" id="sidebar-perfil">
 
             <div>
 
-                <a href="/perfil" class="text-dec-none">
+                <a href="/perfil/{{ user.id }}" class="text-dec-none">
                     <h4 class="close-edit-perfil">X</h4>
                 </a>
 
                 <div class="container d-flex flex-column main-div div-post-content div-edit-perfil">
 
+                    {% for i in userconf %}
+                    {% for j in userinfo %}
+                    <!-- {{ j.imagem }}<br> -->
+                    <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit" id="edit-perf">
+                        {% csrf_token %}
 
+                        <label>Username:</label>
+                        <input type="text" value="{{ i.username }}" class="input-login">
+
+                        <label>First Name: </label>
+                        {% if i.first_name %}
+                        <input type="text" value="{{ i.first_name }}" class="input-login">
+                        {% else %}
+                        <input type="text" placeholder="First name..." class="input-login">
+                        {% endif %}
+
+                        <label>Last Name:</label>
+                        {% if i.last_name %}
+                        <input type="text" value="{{ i.last_name }}" class="input-login">
+                        {% else %}
+                        <input type="text" placeholder="Last name..." class="input-login">
+                        {% endif %}
+
+                        <label>Descição: </label>
+                        {% if j.descricao %}
+                        <textarea type="text" value="{{ j.descricao }}" class="input-login hei">{{ j.descricao }}</textarea>
+                        {% else %}
+                        <textarea type="text" placeholder="Descição..." class="input-login"></textarea>
+                        {% endif %}
+
+                        <button type="submit" class="login-button">Submit</button>
+                    </form>
+
+                    {% endfor %}
+
+                    {% endfor %}
 
                 </div>
 

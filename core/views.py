@@ -1,4 +1,5 @@
 from multiprocessing import context
+import re
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -7,8 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-from .forms import CreateUserForm, SubmitCategoriaForm, SubmitPostForm
-from .models import Categorias, Posts
+from .forms import CreateUserForm, EditPerfilForm, SubmitCategoriaForm, SubmitPostForm
+from .models import Categorias, Person, Posts
 from .utils import auto_login
 
 
@@ -95,16 +96,30 @@ def show_posts(request, id_categoria):
 
 
 @login_required(login_url="/")
-def perfil(request):
+def perfil(request, id_user):
+    user = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')    
     context = {}
     return render(request, 'perfil.html', context)
 
 
 @login_required(login_url="/")
-def editar_perfil(request):
-    # forms = 
+def editar_perfil(request, id_user):
+    userconf = User.objects.filter(id=id_user).values('username', 'first_name', 'last_name')
+    userinfo = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
+    context = {
+        'userconf' : userconf,
+        'userinfo' : userinfo
+    }
 
-    return render(request, 'edit-perfil.html')
+    return render(request, 'edit-perfil.html', context)
+
+@login_required(login_url="/")
+def submit_edicao(request, id_user):
+
+    
+
+
+    return redirect(f'/perfil/{id_user}')
 
 
 @login_required(login_url="/")

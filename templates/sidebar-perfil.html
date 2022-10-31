@@ -8,7 +8,7 @@
         {% endif %}
     </div>
     <div>
-        <a class="editar-infos-perfil shadow" href="editar-perfil">Editar</a>
+        <a class="editar-infos-perfil shadow" href="{{ user.id }}/editar-perfil">Editar</a>
     </div>
     <div class="d-flex flex-column">
             <p class="list-infos-perfil shadow" id="editar-perfil"><strong>Username:</strong> {{ user.username }}</p>

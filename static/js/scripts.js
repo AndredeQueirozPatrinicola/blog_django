@@ -5,7 +5,7 @@
 // }
 
 
-if (!document.getElementById('login')) 
+if (!document.getElementById('login') && !document.getElementById('edit-perf')) 
 {
     if (document.getElementsByTagName('label').length >= 4) 
     {
@@ -35,7 +35,7 @@ if (!document.getElementById('login'))
             labelImagem.style.width = '170px'
         }
     }
-}else
+}else if(document.getElementById('id_password1'))
 {
     const password_1 = document.getElementById('id_password1')
     const password_2 = document.getElementById('id_password2')
@@ -45,8 +45,9 @@ if (!document.getElementById('login'))
 }
 
 
-const sidebar = document.getElementById('sidebar-perfil')
-if (sidebar)
-{
+const sidebar = document.getElementById('sidebar-perfil') 
+const editPerf = document.getElementById('edit-perf')
+if (sidebar || editPerf)
+{ 
     document.getElementById('base').style.marginTop = '5rem'
 }

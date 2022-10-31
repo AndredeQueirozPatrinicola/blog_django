@@ -362,6 +362,10 @@ input[type='file']{
     text-decoration: none;
 }
 
+.hei{
+    height: 250px;
+}
+
 
 @media only screen and (max-width:1560px){
 

@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 from django.views.static import serve
 from django.conf import settings
 
+app_name = 'core'
+
 urlpatterns = [
     path('', views.index),
     path('login/', views.login_page),
@@ -25,8 +27,11 @@ urlpatterns = [
     path('categorie/<int:id_categoria>', views.show_posts),
     path('post/<int:id_post>', views.post),
 
-    path('perfil', views.perfil),
-    path('editar-perfil', views.editar_perfil),
+    path('perfil/<str:id_user>', views.perfil),
+    path('perfil/<int:id_user>/submit', views.submit_edicao),
+    path('perfil/<str:id_user>/editar-perfil', views.editar_perfil),
+    
+
 
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 
