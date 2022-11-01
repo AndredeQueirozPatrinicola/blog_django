@@ -23,53 +23,19 @@
                 <div class="container d-flex flex-column main-div div-post-content div-edit-perfil">
 
 
-                    <!-- {{ j.imagem }}<br> -->
                     <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit" id="edit-perf">
-                    <!--    {% for j in userinfo %}
-                        {% for i in userconf %}
                         {% csrf_token %}
+                        {{ form1 }}
+                        {{ form2 }}
 
-                        <label>Username:</label>
-                        <input type="text" value="{{ i.username }}" name="username" class="input-login">
+                        <button type="submit" class="login-button">Submit</button>
 
-                        <label>First Name: </label>
-                        {% if i.first_name %}
-                        <input type="text" value="{{ i.first_name }}" name="first_name" class="input-login">
-                        {% else %}
-                        <input type="text" placeholder="First name..." name="first_name" class="input-login">
-                        {% endif %}
-
-                        <label>Last Name:</label>
-                        {% if i.last_name %}
-                        <input type="text" value="{{ i.last_name }}" name="last_name" class="input-login">
-                        {% else %}
-                        <input type="text" placeholder="Last name..." name="last_name" class="input-login">
-                        {% endif %}
-
-                        <label>Descição: </label>
-                        {% if j.descricao %}
-                        <textarea type="text" value="{{ j.descricao }}" name="descricao"
-                            class="input-login hei">{{ j.descricao }}</textarea>
-                        {% else %}
-                        <textarea type="text" name='descricao' placeholder="Descição..." class="input-login"></textarea>
-                        {% endif %}
-                        -->
-
-                        <!-- {% endfor %}
-
-                        {% endfor %}-->
-                        {% csrf_token %}
-                            {{ form1 }}
-                            {{ form2 }}
-
-                            <button type="submit" class="login-button">Submit</button> 
-
-                    </form> 
+                    </form>
 
                     <div>
                         {% for message in messages %}
 
-                            {{ message }}
+                        {{ message }}
 
                         {% endfor %}
                     </div>
@@ -85,7 +51,7 @@
 </div>
 
 <script>
-    
+
     const user = '{{ user.id }}';
     const usuario = document.getElementById('user');
     if (usuario) {
@@ -94,28 +60,25 @@
     }
     const descricao = '{{ person.descricao }}'
     const descricao_dom = document.getElementById('descricao')
-    if (descricao_dom)
-    {
+    if (descricao_dom) {
         descricao_dom.value = descricao;
     }
     const username = '{{ user.username }}'
     const username_dom = document.getElementById('username')
-    if (username_dom)
-    {
+    if (username_dom) {
         username_dom.value = username;
     }
     const firstName = '{{ user.first_name }}'
     const firstNameDom = document.getElementById('first_name')
-    if (firstNameDom)
-    {
+    if (firstNameDom) {
         firstNameDom.value = firstName;
     }
     const lastName = '{{ user.last_name }}'
     const lastNameDom = document.getElementById('last_name')
-    if (lastNameDom)
-    {
+    if (lastNameDom) {
         lastNameDom.value = lastName;
     }
+    
 
 
 </script>
