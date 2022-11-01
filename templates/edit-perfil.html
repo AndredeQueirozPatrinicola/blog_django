@@ -92,6 +92,31 @@
         usuario.value = user;
         usuario.style.display = 'none';
     }
+    const descricao = '{{ person.descricao }}'
+    const descricao_dom = document.getElementById('descricao')
+    if (descricao_dom)
+    {
+        descricao_dom.value = descricao;
+    }
+    const username = '{{ user.username }}'
+    const username_dom = document.getElementById('username')
+    if (username_dom)
+    {
+        username_dom.value = username;
+    }
+    const firstName = '{{ user.first_name }}'
+    const firstNameDom = document.getElementById('first_name')
+    if (firstNameDom)
+    {
+        firstNameDom.value = firstName;
+    }
+    const lastName = '{{ user.last_name }}'
+    const lastNameDom = document.getElementById('last_name')
+    if (lastNameDom)
+    {
+        lastNameDom.value = lastName;
+    }
+
 
 </script>
 

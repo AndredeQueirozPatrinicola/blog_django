@@ -105,34 +105,57 @@ def perfil(request, id_user):
 
 @login_required(login_url="/")
 def editar_perfil(request, id_user):
-    # userconf = User.objects.filter(id=id_user).values('username', 'first_name', 'last_name')
-    # userinfo = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
-    # userinfo = [i for i in userinfo]
-    # userinfo.append({})
+    person = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
     userconf = UpdateUserForm()
     userinfo = EditPerfilForm()
     context = {
         'form1' : userconf,
-        'form2' : userinfo
+        'form2' : userinfo,
+        'person' : person
     }
 
     return render(request, 'edit-perfil.html', context)
 
 @login_required(login_url="/")
 def submit_edicao(request, id_user):
-    form1 = EditPerfilForm()
-    form2 = UpdateUserForm()
+    # form1 = EditPerfilForm()
+    # form2 = UpdateUserForm()
+    # if request.POST:
+    #     form1 = EditPerfilForm(request.POST, request.user)
+    #     form2 = UpdateUserForm(request.POST)
+    #     print(request.POST.get('descricao'))
+    #     if form1.is_valid() and form2.is_valid():
+    #         print('oi')
+    #         form1.save()
+    #         form2.save()
+
     if request.POST:
-        form1 = EditPerfilForm(request.POST, request.user)
-        form2 = UpdateUserForm(request.POST)
-        print(request.POST.get('descricao'))
-        if form1.is_valid() and form2.is_valid():
-            print('oi')
-            form1.save()
-            form2.save()
+        user = request.POST.get('user')
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        descricao = request.POST.get('descricao')
+
+        usuario = User.objects.filter(id=user)
+        if usuario.exists():
+            usuario.update(id=user,
+                        username=username,
+                        first_name=first_name,
+                        last_name=last_name)
+
+
+        person = Person.objects.filter(user=user)
+        if person.exists():
+            person.update(user=user,
+                          descricao=descricao)
         else:
-            messages.error(request, "Houve um problema para atualizar as informações")
-            return redirect(f'/perfil/{id_user}/editar-perfil')
+            person.create(user=user,
+                          descricao=descricao)
+
+
+    else:
+        messages.error(request, "Houve um problema para atualizar as informações")
+        return redirect(f'/perfil/{id_user}/editar-perfil')
 
     return redirect(f'/perfil/{id_user}')
 

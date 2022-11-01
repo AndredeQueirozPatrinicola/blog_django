@@ -53,3 +53,8 @@ if (sidebar || editPerf)
 }
 
 
+const helptext = document.getElementsByClassName('helptext')
+if (helptext)
+{
+    helptext[0].style.display = 'none';
+}

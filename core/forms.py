@@ -53,7 +53,8 @@ class EditPerfilForm(ModelForm):
         model = Person
         fields = ['user', 'descricao']
         widgets = {
-            'user' : forms.Textarea(attrs={'id':'user'})
+            'user' : forms.Textarea(attrs={'id':'user'}),
+            'descricao' : forms.Textarea(attrs={'id' : 'descricao', 'class' : 'input-login', 'placeholder' : 'Descrição...'})
         }
         labels = {'user':''}
         
@@ -62,3 +63,8 @@ class UpdateUserForm(ModelForm):
     class Meta: 
         model = User
         fields = ['username', 'first_name', 'last_name']
+        widgets = {
+            'username' : forms.TextInput(attrs={'id' : 'username', 'class':'input-login', 'placeholder' : 'Username...'}),
+            'first_name' : forms.TextInput(attrs={'id' : 'first_name', 'class':'input-login', 'placeholder' : 'First Name...'}),
+            'last_name' : forms.TextInput(attrs={'id' : 'last_name', 'class':'input-login', 'placeholder' : 'Last Name...'}),
+        }
