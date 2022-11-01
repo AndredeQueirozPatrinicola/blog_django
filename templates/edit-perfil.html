@@ -25,41 +25,54 @@
 
                     <!-- {{ j.imagem }}<br> -->
                     <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit" id="edit-perf">
-                        {% for j in userinfo %}
+                    <!--    {% for j in userinfo %}
                         {% for i in userconf %}
                         {% csrf_token %}
 
                         <label>Username:</label>
-                        <input type="text" value="{{ i.username }}" class="input-login">
+                        <input type="text" value="{{ i.username }}" name="username" class="input-login">
 
                         <label>First Name: </label>
                         {% if i.first_name %}
-                        <input type="text" value="{{ i.first_name }}" class="input-login">
+                        <input type="text" value="{{ i.first_name }}" name="first_name" class="input-login">
                         {% else %}
-                        <input type="text" placeholder="First name..." class="input-login">
+                        <input type="text" placeholder="First name..." name="first_name" class="input-login">
                         {% endif %}
 
                         <label>Last Name:</label>
                         {% if i.last_name %}
-                        <input type="text" value="{{ i.last_name }}" class="input-login">
+                        <input type="text" value="{{ i.last_name }}" name="last_name" class="input-login">
                         {% else %}
-                        <input type="text" placeholder="Last name..." class="input-login">
+                        <input type="text" placeholder="Last name..." name="last_name" class="input-login">
                         {% endif %}
 
                         <label>Descição: </label>
                         {% if j.descricao %}
-                        <textarea type="text" value="{{ j.descricao }}"
+                        <textarea type="text" value="{{ j.descricao }}" name="descricao"
                             class="input-login hei">{{ j.descricao }}</textarea>
                         {% else %}
-                        <textarea type="text" placeholder="Descição..." class="input-login"></textarea>
+                        <textarea type="text" name='descricao' placeholder="Descição..." class="input-login"></textarea>
                         {% endif %}
+                        -->
 
-                        <button type="submit" class="login-button">Submit</button>
+                        <!-- {% endfor %}
+
+                        {% endfor %}-->
+                        {% csrf_token %}
+                            {{ form1 }}
+                            {{ form2 }}
+
+                            <button type="submit" class="login-button">Submit</button> 
+
+                    </form> 
+
+                    <div>
+                        {% for message in messages %}
+
+                            {{ message }}
 
                         {% endfor %}
-
-                        {% endfor %}
-                    </form>
+                    </div>
 
 
                 </div>
@@ -71,5 +84,15 @@
 
 </div>
 
+<script>
+    
+    const user = '{{ user.id }}';
+    const usuario = document.getElementById('user');
+    if (usuario) {
+        usuario.value = user;
+        usuario.style.display = 'none';
+    }
+
+</script>
 
 {% endblock %}

@@ -5,10 +5,8 @@ from django.contrib.auth.models import User
 
 
 class Categorias(models.Model):
-    titulo_categoria = models.CharField(
-        max_length=20, verbose_name="titulo da categoria")
-    descricao_categoria = models.CharField(
-        max_length=100, verbose_name="descrição da categoria")
+    titulo_categoria = models.CharField(max_length=20, verbose_name="titulo da categoria")
+    descricao_categoria = models.CharField(max_length=100, verbose_name="descrição da categoria")
     imagem_categoria = models.ImageField(upload_to='images/', null=True)
 
     class Meta:
@@ -19,10 +17,8 @@ class Categorias(models.Model):
 
 
 class Posts(models.Model):
-    titulo_post = models.CharField(
-        max_length=20, verbose_name="titulo do post")
-    sub_titulo = models.CharField(
-        max_length=100, verbose_name="subtitulo do post")
+    titulo_post = models.CharField(max_length=20, verbose_name="titulo do post")
+    sub_titulo = models.CharField(max_length=100, verbose_name="subtitulo do post")
     conteudo_post = models.TextField(verbose_name="conteudo do post")
     data_criacao = models.DateTimeField(auto_now=True)
     imagem_post = models.ImageField(upload_to='images/', null=True)

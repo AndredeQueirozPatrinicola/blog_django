@@ -1,3 +1,4 @@
+from collections import UserString
 from multiprocessing import context
 import re
 from django.shortcuts import redirect, render
@@ -8,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-from .forms import CreateUserForm, EditPerfilForm, SubmitCategoriaForm, SubmitPostForm
+from .forms import CreateUserForm, EditPerfilForm, SubmitCategoriaForm, SubmitPostForm, UpdateUserForm
 from .models import Categorias, Person, Posts
 from .utils import auto_login
 
@@ -104,29 +105,41 @@ def perfil(request, id_user):
 
 @login_required(login_url="/")
 def editar_perfil(request, id_user):
-    userconf = User.objects.filter(id=id_user).values('username', 'first_name', 'last_name')
-    userinfo = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
-    userinfo = [i for i in userinfo]
-    userinfo.append({})
+    # userconf = User.objects.filter(id=id_user).values('username', 'first_name', 'last_name')
+    # userinfo = Person.objects.filter(user=id_user).values('user', 'imagem', 'descricao')
+    # userinfo = [i for i in userinfo]
+    # userinfo.append({})
+    userconf = UpdateUserForm()
+    userinfo = EditPerfilForm()
     context = {
-        'userconf' : userconf,
-        'userinfo' : userinfo
+        'form1' : userconf,
+        'form2' : userinfo
     }
 
     return render(request, 'edit-perfil.html', context)
 
 @login_required(login_url="/")
 def submit_edicao(request, id_user):
-
-    
-
+    form1 = EditPerfilForm()
+    form2 = UpdateUserForm()
+    if request.POST:
+        form1 = EditPerfilForm(request.POST, request.user)
+        form2 = UpdateUserForm(request.POST)
+        print(request.POST.get('descricao'))
+        if form1.is_valid() and form2.is_valid():
+            print('oi')
+            form1.save()
+            form2.save()
+        else:
+            messages.error(request, "Houve um problema para atualizar as informações")
+            return redirect(f'/perfil/{id_user}/editar-perfil')
 
     return redirect(f'/perfil/{id_user}')
 
 
 @login_required(login_url="/")
 def post_design(request):
-    categoria = Categorias.objects.all
+    categoria = Categorias.objects.all()
     form = SubmitPostForm()
 
     context = {

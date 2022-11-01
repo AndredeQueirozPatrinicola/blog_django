@@ -1,4 +1,4 @@
-from dataclasses import field
+
 from django import forms
 from django.forms import ModelForm, widgets
 from django.contrib.auth.models import User
@@ -50,6 +50,15 @@ class SubmitPostForm(ModelForm):
 
 class EditPerfilForm(ModelForm):
     class Meta:
-        models = Person
-        fields = ['user', 'imagem', 'descricao']
+        model = Person
+        fields = ['user', 'descricao']
+        widgets = {
+            'user' : forms.Textarea(attrs={'id':'user'})
+        }
+        labels = {'user':''}
         
+
+class UpdateUserForm(ModelForm):
+    class Meta: 
+        model = User
+        fields = ['username', 'first_name', 'last_name']
