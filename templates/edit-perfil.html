@@ -68,6 +68,11 @@
     if (username_dom) {
         username_dom.value = username;
     }
+    const email = '{{ user.email }}'
+    const email_dom = document.getElementById('email')
+    if (email_dom) {
+        email_dom.value = email;
+    }
     const firstName = '{{ user.first_name }}'
     const firstNameDom = document.getElementById('first_name')
     if (firstNameDom) {

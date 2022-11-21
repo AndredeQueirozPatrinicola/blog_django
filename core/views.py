@@ -125,6 +125,7 @@ def submit_edicao(request, id_user):
         user = request.POST.get('user')
         username = request.POST.get('username')
         first_name = request.POST.get('first_name')
+        email = request.POST.get('email')
         last_name = request.POST.get('last_name')
         descricao = request.POST.get('descricao')
 
@@ -132,6 +133,7 @@ def submit_edicao(request, id_user):
         if usuario.exists():
             usuario.update(id=user,
                         username=username,
+                        email=email,
                         first_name=first_name,
                         last_name=last_name)
 
@@ -163,10 +165,12 @@ def editar_imagem(request, id_user):
 @login_required(login_url="/")
 def submit_imagem(request, id_user):
     imagem = request.POST.get('imagem')
-    token = request.POST.get('csrfmiddlewaretoken')
+    teste = request.FILES
     try:
-        print(imagem+token)
-        Person.objects.update(imagem=imagem + token)
+        person = Person.objects.filter(user=id_user)
+        person.update(
+                        imagem=imagem
+                     )
     except:
         messages.error(request, 'Não foi possivel atualizar a imagem')
 

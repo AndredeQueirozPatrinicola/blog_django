@@ -62,11 +62,12 @@ class EditPerfilForm(ModelForm):
 class UpdateUserForm(ModelForm):
     class Meta: 
         model = User
-        fields = ['username', 'first_name', 'last_name']
+        fields = ['username', 'first_name', 'email', 'last_name']
         widgets = {
             'username' : forms.TextInput(attrs={'id' : 'username', 'class':'input-login', 'placeholder' : 'Username...'}),
             'first_name' : forms.TextInput(attrs={'id' : 'first_name', 'class':'input-login', 'placeholder' : 'First Name...'}),
             'last_name' : forms.TextInput(attrs={'id' : 'last_name', 'class':'input-login', 'placeholder' : 'Last Name...'}),
+            'email' : forms.EmailInput(attrs={'class':'input-login', 'id': 'email'}),
         }
 
 
@@ -74,3 +75,6 @@ class UpdateImageForm(ModelForm):
     class Meta:
         model = Person
         fields = ['imagem']
+        widgets = {
+            'imagem' : forms.FileInput(attrs={'value' : 'imagem', 'name': 'imagem'})
+        }

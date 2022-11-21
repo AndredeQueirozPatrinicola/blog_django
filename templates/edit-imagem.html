@@ -23,7 +23,7 @@
                 <div class="container d-flex flex-column main-div div-post-content div-edit-perfil">
 
 
-                    <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit_imagem" id="edit-perf">
+                    <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit_imagem" id="edit-perf" enctype="multipart/form-data">
                         
                         {% csrf_token %}
                         {{ form }}

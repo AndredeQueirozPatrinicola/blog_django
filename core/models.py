@@ -39,3 +39,13 @@ class Person(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
+
+class Coments(models.Model):
+    autor = models.ForeignKey(Person, on_delete=models.CASCADE)
+    comentario = models.TextField()
+    data_postagem = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.user)
