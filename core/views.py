@@ -152,8 +152,7 @@ def submit_edicao(request, id_user):
             person.update(user=user,
                           descricao=descricao)
         else:
-            person.create(user=user,
-                          descricao=descricao)
+            person.create(user_id=user,descricao=descricao)
 
 
     else:
