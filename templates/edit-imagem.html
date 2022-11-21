@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Perfil | {% endblock %}
+
+{% block content %}
+
+<div class="d-flex div-perfil shadow" id="div-perfil">
+
+    {% include 'sidebar-perfil.html' %}
+
+    <div class="div-perfil-meio" id="div-perfil-meio">
+
+        <div class="edit-perfil" id="sidebar-perfil">
+
+            <div>
+
+                <a href="/perfil/{{ user.id }}" class="text-dec-none">
+                    <h4 class="close-edit-perfil">X</h4>
+                </a>
+
+                <div class="container d-flex flex-column main-div div-post-content div-edit-perfil">
+
+
+                    <form class="d-flex flex-column" method="post" action="/perfil/{{ user.id }}/submit_imagem" id="edit-perf">
+                        
+                        {% csrf_token %}
+                        {{ form }}
+
+                        <button type="submit" class="login-button">Submit</button>
+
+                    </form>
+
+                    <div>
+                        {% for message in messages %}
+
+                        {{ message }}
+
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    const user = '{{ user.id }}';
+    const usuario = document.getElementById('user');
+    if (usuario) {
+        usuario.value = user;
+        usuario.style.display = 'none';
+    }   
+
+
+</script>
+
+{% endblock %}

@@ -210,7 +210,11 @@ footer {
     border-radius: 100%;
     width: 250px;
     height: 250px;
+}
 
+.imagem-perfil:hover{
+    filter: blur(4px);
+    transition: 1s;
 }
 
 .list-infos-perfil, .editar-infos-perfil{

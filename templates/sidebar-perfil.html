@@ -2,9 +2,13 @@
 <div class="d-flex flex-column div-perfil-esq shadow" id="sidebar-perfil">
     <div class="img-container">
         {% if user.person.imagem %}
-        <img src="{{ user.person.imagem.url }}" class="imagem-perfil shadow">
+        <a href="{{ user.id }}/editar-imagem">
+            <img src="{{ user.person.imagem.url }}" class="imagem-perfil shadow" id="imagem-perfil" onmouseover="mudarImage()">
+        </a>    
         {% else %}
-        <img src="{% static 'img/avatar2.jpg' %}" class="imagem-perfil shadow">
+        <a href="{{ user.id }}/editar-imagem">
+            <img src="{% static 'img/avatar2.jpg' %}" class="imagem-perfil shadow" id="imagem-perfil" onmouseover="mudarImage()">
+        </a>
         {% endif %}
     </div>
     <div>
@@ -17,3 +21,4 @@
             <p class="list-infos-perfil shadow"><strong>Descrição: </strong>{{ user.person.descricao }}</p>
     </div>
 </div>
+

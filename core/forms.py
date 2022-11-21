@@ -68,3 +68,9 @@ class UpdateUserForm(ModelForm):
             'first_name' : forms.TextInput(attrs={'id' : 'first_name', 'class':'input-login', 'placeholder' : 'First Name...'}),
             'last_name' : forms.TextInput(attrs={'id' : 'last_name', 'class':'input-login', 'placeholder' : 'Last Name...'}),
         }
+
+
+class UpdateImageForm(ModelForm):
+    class Meta:
+        model = Person
+        fields = ['imagem']

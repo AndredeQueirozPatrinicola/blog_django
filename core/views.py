@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-from .forms import CreateUserForm, EditPerfilForm, SubmitCategoriaForm, SubmitPostForm, UpdateUserForm
+from .forms import CreateUserForm, EditPerfilForm, SubmitCategoriaForm, SubmitPostForm, UpdateUserForm, UpdateImageForm
 from .models import Categorias, Person, Posts
 from .utils import auto_login
 
@@ -121,17 +121,6 @@ def editar_perfil(request, id_user):
 
 @login_required(login_url="/")
 def submit_edicao(request, id_user):
-    # form1 = EditPerfilForm()
-    # form2 = UpdateUserForm()
-    # if request.POST:
-    #     form1 = EditPerfilForm(request.POST, request.user)
-    #     form2 = UpdateUserForm(request.POST)
-    #     print(request.POST.get('descricao'))
-    #     if form1.is_valid() and form2.is_valid():
-    #         print('oi')
-    #         form1.save()
-    #         form2.save()
-
     if request.POST:
         user = request.POST.get('user')
         username = request.POST.get('username')
@@ -160,6 +149,28 @@ def submit_edicao(request, id_user):
         return redirect(f'/perfil/{id_user}/editar-perfil')
 
     return redirect(f'/perfil/{id_user}')
+
+@login_required(login_url="/")
+def editar_imagem(request, id_user):
+    person = Person.objects.filter(user=id_user).values('imagem')
+    form = UpdateImageForm()
+    context = {
+        'person' : person,
+        'form' : form
+    }
+    return render(request, 'edit-imagem.html', context)
+
+@login_required(login_url="/")
+def submit_imagem(request, id_user):
+    imagem = request.POST.get('imagem')
+    token = request.POST.get('csrfmiddlewaretoken')
+    try:
+        print(imagem+token)
+        Person.objects.update(imagem=imagem + token)
+    except:
+        messages.error(request, 'Não foi possivel atualizar a imagem')
+
+    return redirect(f'/perfil/{id_user}/editar-imagem')
 
 
 @login_required(login_url="/")

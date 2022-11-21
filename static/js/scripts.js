@@ -58,3 +58,4 @@ if (helptext)
 {
     helptext[0].style.display = 'none';
 }
+

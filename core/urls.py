@@ -29,8 +29,9 @@ urlpatterns = [
 
     path('perfil/<str:id_user>', views.perfil),
     path('perfil/<int:id_user>/submit', views.submit_edicao),
+    path('perfil/<int:id_user>/submit_imagem', views.submit_imagem),
     path('perfil/<str:id_user>/editar-perfil', views.editar_perfil),
-    
+    path('perfil/<str:id_user>/editar-imagem', views.editar_imagem),    
 
 
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
