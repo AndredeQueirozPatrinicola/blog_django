@@ -121,33 +121,43 @@ def editar_perfil(request, id_user):
 
 @login_required(login_url="/")
 def submit_edicao(request, id_user):
-    if request.POST:
-        user = request.POST.get('user')
-        username = request.POST.get('username')
-        first_name = request.POST.get('first_name')
-        email = request.POST.get('email')
-        last_name = request.POST.get('last_name')
-        descricao = request.POST.get('descricao')
+    try:
+        if request.POST:
+            user = request.POST.get('user')
+            username = request.POST.get('username')
+            first_name = request.POST.get('first_name')
+            email = request.POST.get('email')
+            last_name = request.POST.get('last_name')
+            descricao = request.POST.get('descricao')
 
-        usuario = User.objects.filter(id=user)
-        if usuario.exists():
-            usuario.update(id=user,
-                        username=username,
-                        email=email,
-                        first_name=first_name,
-                        last_name=last_name)
+            usuario = User.objects.filter(id=user)
+            if usuario.exists(): 
+                verifica_usuario = User.objects.filter(username=username).values('id')
+                if verifica_usuario and user != verifica_usuario[0].get('id'):
+                    messages.error(request, "O username deve ser unico.")
+                    return redirect(f'/perfil/{id_user}/editar-perfil')
+                else:
+                    usuario.update(id=user,
+                                username=username,
+                                email=email,
+                                first_name=first_name,
+                                last_name=last_name)
 
 
-        person = Person.objects.filter(user=user)
-        if person.exists():
-            person.update(user=user,
-                          descricao=descricao)
+            person = Person.objects.filter(user=user)
+            if person.exists():
+                person.update(user=user,
+                            descricao=descricao)
+            else:
+                person.create(user_id=user,descricao=descricao)
+
+
         else:
-            person.create(user_id=user,descricao=descricao)
-
-
-    else:
-        messages.error(request, "Houve um problema para atualizar as informações")
+            messages.error(request, "Houve um problema para atualizar as informações")
+            return redirect(f'/perfil/{id_user}/editar-perfil')
+    
+    except:
+        messages.error(request, "Algo de errado ")
         return redirect(f'/perfil/{id_user}/editar-perfil')
 
     return redirect(f'/perfil/{id_user}')
